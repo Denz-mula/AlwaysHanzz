@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketplace Always Hanzz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom right, #f0f2f5, #d9e4f5);
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .produk-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
+      padding: 1.5rem;
+    }
+
+    .produk {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .produk:hover {
+      transform: scale(1.02);
+    }
+
+    .produk button {
+      background: #111;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-top: 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .formulir {
+      background: white;
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    .formulir input, .formulir select {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .formulir label {
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+      display: block;
+    }
+
+    .formulir button {
+      background: #111;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .kotak-qris {
+      border: 2px dashed #666;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      background: #eee;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌐 Marketplace Always Hanzz</h1>
+</header>
+
+<section>
+  <h2 style="text-align:center;">📦 All List Produk</h2>
+  <div class="produk-container">
+    <div class="produk">
+      <h3>Reseller Panel</h3>
+      <p>Rp5.000/</p>
+      <button onclick="isiProduk('Reseller Panel - Rp5.000')">Pilih</button>
+    </div>
+    <div class="produk">
+      <h3>Admin Panel</h3>
+      <p>Rp12.000</p>
+      <button onclick="isiProduk('Admin Panel - Rp12.000')">Pilih</button>
+    </div>
+    <div class="produk">
+      <h3>Server Panel Bot ( Mini )</h3>
+      <p>Rp3.000</p>
+      <button onclick="isiProduk('Server Panel Bot ( Mini ) - Rp3.000')">Pilih</button>
+     </div>
+      <div class="produk">
+      <h3>Server Panel Bot ( Medium )</h3>
+      <p>Rp5.000</p>
+      <button onclick="isiProduk('Server Panel Bot ( Medium ) - Rp5.000')">Pilih</button>
+     </div>
+      <div class="produk">
+      <h3>Server Panel Bot ( Super )</h3>
+      <p>Rp9.000</p>
+      <button onclick="isiProduk('Server Panel Bot ( Super ) - Rp9.000')">Pilih</button>
+     </div>
+      <div class="produk">
+      <h3>Server Admin Panel</h3>
+      <p>Rp12.000</p>
+      <button onclick="isiProduk('Server Admin Panel - Rp12.000')">Pilih</button>
+     </div>
+      <div class="produk">
+      <h3>Script Bot Create Website</h3>
+      <p>Rp20.000</p>
+      <button onclick="isiProduk('Script Bot Create Website - Rp20.000')">Pilih</button>
+     </div>
+      <div class="produk">
+      <h3>Script Simpel Menu V7</h3>
+      <p>Rp15.000 {Promo}</p>
+      <button onclick="isiProduk('Script Simpel Menu V7 - Rp15.000')">Pilih</button>
+     </div>
+      <div class="produk">
+      <h3>Script Store X Push</h3>
+      <p>Rp20.000</p>
+      <button onclick="isiProduk('Script Store X Push - Rp20.000')">Pilih</button>
+     </div>
+      <div class="produk">
+      <h3>Base Script</h3>
+      <p>Rp15.000</p>
+      <button onclick="isiProduk('Base Script - Rp15.000')">Pilih<button/>
+     </div>
+       <div class="produk">
+      <h3>Jasa Pembuatan Website</h3>
+      <p>Rp10.000</p>
+      <button onclick="isiProduk('Jasa Pembuatan Website - Rp10.000')">Pilih<button/>
+     </div>
+      <div class="produk">
+      <h3>Jasa Pasang Security Script</h3>
+      <p>Rp25.000</p>
+      <button onclick="isiProduk('Jasa Pasang Security Script - Rp25.000')">Pilih<button/>
+     </div>
+      <div class="produk">
+      <h3>Murid Website</h3>
+      <p>Rp15.000</p>
+      <button onclick="isiProduk('Murid Website - Rp15.000')">Pilih<button/>
+     </div>
+      <div class="produk">
+      <h3>Murid Nokos</h3>
+      <p>Rp4.000</p>
+      <button onclick="isiProduk('Murid Nokos - Rp4.000')">Pilih<button/>
+     </div>
+      <div class="produk">
+      <h3>Base Script</h3>
+      <p>Rp15.000</p>
+      <button onclick="isiProduk('Base Script - Rp15.000')">Pilih<button/>
+     </div>
+    </div>
+  </div>
+</section>
+
+<!-- Formulir -->
+<div class="formulir" id="formulir-section">
+  <label for="nama">🧑 Nama Lengkap</label>
+  <input type="text" id="nama" placeholder="Nama Lengkap">
+
+  <label for="whatsapp">📱 Nomor WhatsApp</label>
+  <input type="text" id="whatsapp" placeholder="08xxxxxxxxxx">
+
+  <label for="catatan">📝 Catatan (Opsional)</label>
+  <input type="text" id="catatan" placeholder="Catatan tambahan">
+
+  <label for="produk">📦 Produk Dipilih</label>
+  <input type="text" id="produk" readonly placeholder="Belum memilih produk">
+
+  <label>💳 Metode Pembayaran</label>
+  <select id="metode">
+    <option value="Dana">Dana (083822176542)</option>
+    <option value="QRIS">QRIS</option>
+  </select>
+
+  <div class="kotak-qris" id="qrisBox" style="display:none;">
+    <strong>Scan QRIS di bawah ini:</strong><br>
+    <img src="https://img1.pixhost.to/images/6475/610898992_imgtmp.jpg" alt="QRIS" style="margin-top:1rem;">
+  </div>
+
+  <label for="bukti">📤 Upload Bukti Transfer</label>
+  <input type="file" id="bukti" accept="image/*">
+
+  <button onclick="kirimOrder()">Kirim Pesanan</button>
+</div>
+
+<footer>
+  © Always Hanzz - Solusi Hosting 2025
+</footer>
+
+<script>
+  const metodeSelect = document.getElementById("metode");
+  const qrisBox = document.getElementById("qrisBox");
+
+  metodeSelect.addEventListener("change", () => {
+    qrisBox.style.display = metodeSelect.value === "QRIS" ? "block" : "none";
+  });
+
+  function isiProduk(pilihan) {
+    document.getElementById("produk").value = pilihan;
+    document.getElementById("formulir-section").scrollIntoView({ behavior: "smooth" });
+  }
+
+  async function kirimOrder() {
+    const nama = document.getElementById("nama").value;
+    const wa = document.getElementById("whatsapp").value;
+    const produk = document.getElementById("produk").value;
+    const catatan = document.getElementById("catatan").value;
+    const metode = document.getElementById("metode").value;
+    const file = document.getElementById("bukti").files[0];
+
+    if (!nama || !wa || !produk || !file) {
+      alert("Mohon lengkapi semua data & upload bukti transfer.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("key", "6770bf49c86db0e1d9dfe512091e8e79");
+
+    const upload = await fetch("https://api.imgbb.com/1/upload", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await upload.json();
+    const linkGambar = result.data.url;
+
+    const pesan = `Halo Admin, saya ingin order:\n\n📦 Produk: ${produk}\n🧑 Nama: ${nama}\n📱 WhatsApp: ${wa}\n💬 Catatan: ${catatan}\n💳 Pembayaran: ${metode}\n📸 Bukti: ${linkGambar}`;
+    const linkWA = `https://wa.me/6281936513894?text=${encodeURIComponent(pesan)}`;
+    window.open(linkWA, "_blank");
+  }
+</script>
+
+</body>
+</html>
