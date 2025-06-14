@@ -192,93 +192,100 @@
 
 <!-- Formulir -->
 <div class="formulir" id="formulir-section">
-  <label for="nama">🧑 Nama Lengkap</label>
-  <input type="text" id="nama" placeholder="Nama Lengkap">
-
-  <label for="whatsapp">📱 Nomor WhatsApp</label>
-  <input type="text" id="whatsapp" placeholder="08xxxxxxxxxx">
-
-  <label for="catatan">📝 Catatan (Opsional)</label>
-  <input type="text" id="catatan" placeholder="Catatan tambahan">
-
-  <label for="produk">📦 Produk Dipilih</label>
-  <input type="text" id="produk" readonly placeholder="Belum memilih produk">
+  <input type="text" id="nama" placeholder="🧑 Nama Lengkap" required />
+  <input type="text" id="whatsapp" placeholder="📱 Nomor WhatsApp" required />
+  <input type="text" id="catatan" placeholder="📝 Catatan (Opsional)" />
+  <input type="text" id="produk" placeholder="📦 Produk Dipilih" readonly required />
 
   <label>💳 Metode Pembayaran</label>
-  <select id="metode">
-    <div class="payment-dana">
-  <h3>Pembayaran via Dana</h3>
-  <p>Nomor Dana: <span id="nomorDana">081234567890</span></p>
-  <button onclick="salinNomorDana()">Salin Nomor Dana</button>
-</div>
+  <select id="metode" onchange="toggleMetode()">
+    <option value="">-- Pilih --</option>
+    <option value="Dana">Dana</option>
     <option value="QRIS">QRIS</option>
   </select>
 
-  <div class="kotak-qris" id="qrisBox" style="display:none;">
-    <strong>Scan QRIS di bawah ini:</strong><br>
-    <img src="https://files.catbox.moe/lg8dh3.png" alt="QRIS" style="margin-top:1rem;">
+  <!-- Dana -->
+  <div id="danaBox" style="display:none; margin-top:1rem;">
+    <p>Nomor Dana: <strong id="nomorDana">083822176542</strong></p>
+    <button onclick="salinNomorDana()">Salin Nomor Dana</button>
   </div>
 
-  <label for="bukti">📤 Upload Bukti Transfer</label>
-  <input type="file" id="bukti" accept="image/*">
+  <!-- QRIS -->
+  <div id="qrisBox" style="display:none; margin-top:1rem;">
+    <p>Scan QRIS di bawah ini:</p>
+    <div style="border: 1px solid #ccc; padding:1rem; border-radius:10px;">
+      <img src="https://files.catbox.moe/lg8dh3.png" alt="QRIS" style="width:100%; max-width:300px;" />
+    </div>
+  </div>
+
+  <!-- Upload Bukti Transfer -->
+  <label style="margin-top:1rem;">📤 Upload Bukti Transfer</label>
+  <input type="file" id="bukti" accept="image/*" />
 
   <button onclick="kirimOrder()">Kirim Pesanan</button>
 </div>
-
 <footer>
   © Always Hanzz - Solusi Hosting 2025
 </footer>
 
 <script>
-  const metodeSelect = document.getElementById("metode");
-  const qrisBox = document.getElementById("qrisBox");
+function toggleMetode() {
+  const metode = document.getElementById("metode").value;
+  document.getElementById("danaBox").style.display = metode === "Dana" ? "block" : "none";
+  document.getElementById("qrisBox").style.display = metode === "QRIS" ? "block" : "none";
+}
 
-  metodeSelect.addEventListener("change", () => {
-    qrisBox.style.display = metodeSelect.value === "QRIS" ? "block" : "none";
-  });
-
-  function isiProduk(pilihan) {
-    document.getElementById("produk").value = pilihan;
-    document.getElementById("formulir-section").scrollIntoView({ behavior: "smooth" });
-  }
-  function salinNomorDana() {
-  const nomor = document.getElementById("nomorDana").textContent;
+function salinNomorDana() {
+  const nomor = document.getElementById("nomorDana").innerText;
   navigator.clipboard.writeText(nomor).then(() => {
     alert("Nomor Dana berhasil disalin!");
-  }).catch(() => {
-    alert("Gagal menyalin nomor Dana.");
   });
+}
+
+async function kirimOrder() {
+  const nama = document.getElementById("nama").value;
+  const wa = document.getElementById("whatsapp").value;
+  const produk = document.getElementById("produk").value;
+  const catatan = document.getElementById("catatan").value;
+  const metode = document.getElementById("metode").value;
+  const bukti = document.getElementById("bukti").files[0];
+
+  if (!nama || !wa || !produk || !metode || !bukti) {
+    alert("Mohon lengkapi semua data dan upload bukti transfer.");
+    return;
   }
 
-  async function kirimOrder() {
-    const nama = document.getElementById("nama").value;
-    const wa = document.getElementById("whatsapp").value;
-    const produk = document.getElementById("produk").value;
-    const catatan = document.getElementById("catatan").value;
-    const metode = document.getElementById("metode").value;
-    const file = document.getElementById("bukti").files[0];
+  // Upload gambar ke Imgbb
+  const apiKey = "6770bf49c86db0e1d9dfe512091e8e79";
+  const formData = new FormData();
+  formData.append("image", bukti);
 
-    if (!nama || !wa || !produk || !file) {
-      alert("Mohon lengkapi semua data & upload bukti transfer.");
-      return;
-    }
+  const upload = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+    method: "POST",
+    body: formData,
+  });
 
-    const formData = new FormData();
-    formData.append("image", file);
-    formData.append("key", "6770bf49c86db0e1d9dfe512091e8e79");
-
-    const upload = await fetch("https://api.imgbb.com/1/upload", {
-      method: "POST",
-      body: formData
-    });
-
-    const result = await upload.json();
-    const linkGambar = result.data.url;
-
-    const pesan = `Halo Admin, saya ingin order:\n\n📦 Produk: ${produk}\n🧑 Nama: ${nama}\n📱 WhatsApp: ${wa}\n💬 Catatan: ${catatan}\n💳 Pembayaran: ${metode}\n📸 Bukti: ${linkGambar}`;
-    const linkWA = `https://wa.me/6281936513894?text=${encodeURIComponent(pesan)}`;
-    window.open(linkWA, "_blank");
+  const result = await upload.json();
+  if (!result.success) {
+    alert("Gagal upload gambar");
+    return;
   }
+
+  const linkGambar = result.data.url;
+
+  const pesan = `Halo Admin, saya ingin order:
+  
+📦 Produk: ${produk}
+🧑 Nama: ${nama}
+📱 WhatsApp: ${wa}
+💳 Metode: ${metode}
+📝 Catatan: ${catatan}
+📤 Bukti Transfer: ${linkGambar}`;
+
+  const nomorAdmin = "6281936513894";
+  const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
+  window.open(linkWA, "_blank");
+}
 </script>
 
 </body>
