@@ -241,6 +241,14 @@
     document.getElementById("produk").value = pilihan;
     document.getElementById("formulir-section").scrollIntoView({ behavior: "smooth" });
   }
+  function salinNomorDana() {
+  const nomor = document.getElementById("nomorDana").textContent;
+  navigator.clipboard.writeText(nomor).then(() => {
+    alert("Nomor Dana berhasil disalin!");
+  }).catch(() => {
+    alert("Gagal menyalin nomor Dana.");
+  });
+  }
 
   async function kirimOrder() {
     const nama = document.getElementById("nama").value;
