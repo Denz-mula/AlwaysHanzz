@@ -189,6 +189,7 @@
     </div>
   </div>
 </section>
+  <div class="formulir" id="formulir-section" style="display:none;">
 
 <!-- Formulir -->
 <div class="formulir" id="formulir-section">
@@ -229,6 +230,14 @@
 </footer>
 
 <script>
+  function isiProduk(namaProduk) {
+  document.getElementById('produk').value = namaProduk;
+
+  // Tampilkan dan scroll ke formulir
+  const form = document.getElementById('formulir-section');
+  form.style.display = 'block';
+  form.scrollIntoView({ behavior: 'smooth' });
+}
 function toggleMetode() {
   const metode = document.getElementById("metode").value;
   document.getElementById("danaBox").style.display = metode === "Dana" ? "block" : "none";
