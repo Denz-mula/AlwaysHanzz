@@ -206,7 +206,11 @@
 
   <label>💳 Metode Pembayaran</label>
   <select id="metode">
-    <option value="Dana">Dana (083822176542)</option>
+    <div class="payment-dana">
+  <h3>Pembayaran via Dana</h3>
+  <p>Nomor Dana: <span id="nomorDana">081234567890</span></p>
+  <button onclick="salinNomorDana()">Salin Nomor Dana</button>
+</div>
     <option value="QRIS">QRIS</option>
   </select>
 
