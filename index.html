@@ -18,15 +18,15 @@
       padding: 1rem;
       text-align: center;
     }
-    .produk-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      max-width: 500px;
-      margin: 1rem auto;
-      padding: 0 1rem;
-      justify-content: center;
-    }
+    ..produk-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  justify-items: center;
+}
     .produk {
       background: white;
       border-radius: 12px;
