@@ -9,9 +9,11 @@
       box-sizing: border-box;
     }
     body {
-  background: url('https://files.catbox.moe/jqeq12.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
+      background: url('https://files.catbox.moe/jqeq12.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      font-family: sans-serif;
+    }
     header {
       background: #111;
       color: white;
@@ -19,32 +21,21 @@
       text-align: center;
     }
     .produk-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  max-width: 600px;
-  margin: 1rem auto;
-  padding: 0 1rem;
-}
-
-.produk {
-  background: white;
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  transition: 0.2s;
-}
-
-/* Trik agar produk terakhir ganjil otomatis ke tengah */
-.produk-container .produk:only-child {
-  grid-column: span 2;
-  justify-self: center;
-}
-.produk-container .produk:nth-child(odd):last-child {
-  grid-column: span 2;
-  justify-self: center;
-}
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 500px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+    }
+    .produk {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: 0.2s;
+    }
     .produk:hover {
       transform: scale(1.03);
     }
@@ -95,13 +86,13 @@
       margin-top: 1rem;
     }
     footer {
-  text-align: center;
-  background: #111;
-  color: white;
-  padding: 1rem;
-  font-size: 0.9rem;
-  margin-top: 3rem;
-}
+      text-align: center;
+      background: #111;
+      color: white;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
   </style>
 </head>
 <body>
@@ -110,12 +101,12 @@
   <h1>Marketplace Always Hanzz</h1>
 </header>
 
-<div class="produk-container">
+<div class="produk-container" id="produkContainer">
   <div class="produk"><h3>Reseller Panel</h3><p>Rp5.000</p><button onclick="pilihProduk('Reseller Panel - Rp5.000')">Pilih</button></div>
   <div class="produk"><h3>Admin Panel</h3><p>Rp12.000</p><button onclick="pilihProduk('Admin Panel - Rp12.000')">Pilih</button></div>
   <div class="produk"><h3>Server Mini</h3><p>Rp3.000</p><button onclick="pilihProduk('Server Mini - Rp3.000')">Pilih</button></div>
   <div class="produk"><h3>Server Medium</h3><p>Rp5.000</p><button onclick="pilihProduk('Server Medium - Rp5.000')">Pilih</button></div>
-  <div class="produk"><h3>Server Super</h3><p>Rp9.000</p><button onclick="pilihProduk('Server Super - Rp9.000')">Pilih</button></div>                                                                                                                                 
+  <div class="produk"><h3>Server Super</h3><p>Rp9.000</p><button onclick="pilihProduk('Server Super - Rp9.000')">Pilih</button></div>                                                                                                                         
   <div class="produk"><h3>Script Simpel Menu V7</h3><p>Rp15.000</p><button onclick="pilihProduk('Script Simpel Menu V7 - Rp15.000')">Pilih</button></div>
   <div class="produk"><h3>Script Create Website</h3><p>Rp20.000</p><button onclick="pilihProduk('Script Create Website - Rp20.000')">Pilih</button></div>
   <div class="produk"><h3>Script Bot Push</h3><p>Rp8.000</p><button onclick="pilihProduk('Script Bot Push - Rp8.000')">Pilih</button></div>
@@ -124,8 +115,9 @@
   <div class="produk"><h3>Jasa Pembuatan Website</h3><p>Rp10.000</p><button onclick="pilihProduk('Jasa Pembuatan Website - Rp10.000')">Pilih</button></div>
   <div class="produk"><h3>Jasa Pasang Database Di Script Bot</h3><p>Rp15.000</p><button onclick="pilihProduk('Jasa Pasang Database Di Script Bot - Rp15.000')">Pilih</button></div>
   <div class="produk"><h3>Murid Nokos</h3><p>Rp4.000</p><button onclick="pilihProduk('Murid Nokos - Rp4.000')">Pilih</button></div>
-  <div class="produk"><h3>Base Script Bot</h3><p>Rp15.000</p><button onclick="pilihProduk('Base Script Bot - Rp15.000')">Pilih</button></div>
-  
+  <div class="produk"><h3>Base Script Bot Wa</h3><p>Rp15.000</p><button onclick="pilihProduk('Base Script Bot Wa - Rp15.000')">Pilih</button></div>
+</div>
+
 <div class="formulir" id="formulir">
   <input type="text" id="nama" placeholder="🧑 Nama" required>
   <input type="text" id="wa" placeholder="📱 Nomor WhatsApp" required>
@@ -198,6 +190,7 @@ async function kirim() {
   }
 
   const linkGambar = hasil.data.url;
+  const nomorAdmin = "6281936513894";
 
   const pesan = `Halo Admin, saya ingin order:
 
@@ -208,13 +201,32 @@ async function kirim() {
 📝 Catatan: ${catatan}
 📤 Bukti: ${linkGambar}`;
 
-  const nomorAdmin = "6281936513894";
   const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
   window.open(linkWA, "_blank");
 }
+
+// Fungsi agar produk terakhir ke tengah jika jumlah ganjil
+function centerLastProductIfOdd() {
+  const container = document.getElementById('produkContainer');
+  const produkList = container.querySelectorAll('.produk');
+  const count = produkList.length;
+
+  produkList.forEach(p => {
+    p.style.gridColumn = '';
+    p.style.justifySelf = '';
+  });
+
+  if (count % 2 === 1) {
+    const last = produkList[count - 1];
+    last.style.gridColumn = 'span 2';
+    last.style.justifySelf = 'center';
+  }
+}
+centerLastProductIfOdd();
 </script>
+
 <footer>
   © Always Hanzz 2023 | Digital Marketplace
 </footer>
 </body>
-</html>
+  </html>
