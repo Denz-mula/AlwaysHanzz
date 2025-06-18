@@ -6,9 +6,11 @@
   <title>Marketplace Always Hanzz</title>
   <style>
     body {
-  background: url('https://files.catbox.moe/jqeq12.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
+      background: url('https://files.catbox.moe/jqeq12.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
     header {
       background: #111;
       color: white;
@@ -18,23 +20,26 @@
     }
 
     .produk-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
       padding: 1.5rem;
     }
 
     .produk {
+      width: calc(50% - 1rem);
+      max-width: 300px;
       background: white;
       border-radius: 12px;
       padding: 1rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: 0.3s;
       text-align: center;
+      transition: transform 0.3s ease;
     }
 
     .produk:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
     .produk button {
@@ -45,6 +50,17 @@
       margin-top: 0.8rem;
       border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .produk button:hover {
+      background: #333;
+    }
+
+    @media (max-width: 600px) {
+      .produk {
+        width: 100%;
+      }
     }
 
     .formulir {
@@ -54,6 +70,8 @@
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      display: none;
+      animation: fadeIn 0.4s ease;
     }
 
     .formulir input, .formulir select {
@@ -81,6 +99,10 @@
       font-size: 1rem;
     }
 
+    .formulir button:hover {
+      background: #333;
+    }
+
     .kotak-qris {
       border: 2px dashed #666;
       padding: 1rem;
@@ -89,18 +111,23 @@
       margin-bottom: 1rem;
     }
 
- .kotak-qris img {
-    max-width: 100%;
-    width: 200px;
-    height: auto;
-    margin-top: 1rem;
-  }
-    
+    .kotak-qris img {
+      max-width: 100%;
+      width: 200px;
+      height: auto;
+      margin-top: 1rem;
+    }
+
     footer {
       text-align: center;
       background: #eee;
       padding: 1rem;
       margin-top: 3rem;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
@@ -111,88 +138,15 @@
 </header>
 
 <section>
-<h2 style="text-align:center; color:#FF4C4C;">📦 All List Produk</h2>
+  <h2 style="text-align:center; color:#FF4C4C;">📦 Semua Produk</h2>
   <div class="produk-container">
-    <div class="produk">
-      <h3>Reseller Panel</h3>
-      <p>Rp5.000</p>
-      <button onclick="isiProduk('Reseller Panel - Rp5.000')">Pilih</button>
-    </div>
-    <div class="produk">
-      <h3>Admin Panel</h3>
-      <p>Rp12.000</p>
-      <button onclick="isiProduk('Admin Panel - Rp12.000')">Pilih</button>
-    </div>
-    <div class="produk">
-      <h3>Server Panel Bot ( Mini )</h3>
-      <p>Rp3.000</p>
-      <button onclick="isiProduk('Server Panel Bot ( Mini ) - Rp3.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Server Panel Bot ( Medium )</h3>
-      <p>Rp5.000</p>
-      <button onclick="isiProduk('Server Panel Bot ( Medium ) - Rp5.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Server Panel Bot ( Super )</h3>
-      <p>Rp9.000</p>
-      <button onclick="isiProduk('Server Panel Bot ( Super ) - Rp9.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Server Admin Panel</h3>
-      <p>Rp12.000</p>
-      <button onclick="isiProduk('Server Admin Panel - Rp12.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Script Bot Create Website</h3>
-      <p>Rp20.000</p>
-      <button onclick="isiProduk('Script Bot Create Website - Rp20.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Script Simpel Menu V7</h3>
-      <p>Rp15.000 {Promo}</p>
-      <button onclick="isiProduk('Script Simpel Menu V7 - Rp15.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Script Store X Push</h3>
-      <p>Rp20.000</p>
-      <button onclick="isiProduk('Script Store X Push - Rp20.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Base Script</h3>
-      <p>Rp15.000</p>
-      <button onclick="isiProduk('Base Script - Rp15.000')">Pilih</button>
-     </div>
-       <div class="produk">
-      <h3>Jasa Pembuatan Website</h3>
-      <p>Rp10.000</p>
-      <button onclick="isiProduk('Jasa Pembuatan Website - Rp10.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Jasa Pasang Security Script</h3>
-      <p>Rp25.000</p>
-      <button onclick="isiProduk('Jasa Pasang Security Script - Rp25.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Murid Website</h3>
-      <p>Rp15.000</p>
-      <button onclick="isiProduk('Murid Website - Rp15.000')">Pilih</button>
-     </div>
-      <div class="produk">
-      <h3>Murid Nokos</h3>
-      <p>Rp4.000</p>
-      <button onclick="isiProduk('Murid Nokos - Rp4.000')">Pilih</button>
-      </div>
-    </div>
-      <div class="produk">
-      <h3>Pasang Database Script</h3>
-      <p>Rp15.000</p>
-      <button onclick="isiProduk('Pasang Database Script - Rp15.000')">Pilih</button>
-      </div>
-    </div>
+    <div class="produk"><h3>Reseller Panel</h3><p>Rp5.000</p><button onclick="isiProduk('Reseller Panel - Rp5.000')">Pilih</button></div>
+    <div class="produk"><h3>Admin Panel</h3><p>Rp12.000</p><button onclick="isiProduk('Admin Panel - Rp12.000')">Pilih</button></div>
+    <div class="produk"><h3>Script V7</h3><p>Rp15.000</p><button onclick="isiProduk('Script V7 - Rp15.000')">Pilih</button></div>
+    <div class="produk"><h3>Base Script</h3><p>Rp10.000</p><button onclick="isiProduk('Base Script - Rp10.000')">Pilih</button></div>
+    <div class="produk"><h3>Jasa Website</h3><p>Rp20.000</p><button onclick="isiProduk('Jasa Website - Rp20.000')">Pilih</button></div>
   </div>
 </section>
-  <div class="formulir" id="formulir-section" style="display:none;">
 
 <!-- Formulir -->
 <div class="formulir" id="formulir-section">
@@ -208,85 +162,80 @@
     <option value="QRIS">QRIS</option>
   </select>
 
-  <!-- Dana -->
   <div id="danaBox" style="display:none; margin-top:1rem;">
     <p>Nomor Dana: <strong id="nomorDana">083822176542</strong></p>
     <button onclick="salinNomorDana()">Salin Nomor Dana</button>
   </div>
 
-  <!-- QRIS -->
   <div id="qrisBox" style="display:none; margin-top:1rem;">
     <p>Scan QRIS di bawah ini:</p>
-    <div style="border: 1px solid #ccc; padding:1rem; border-radius:10px;">
-      <img src="https://files.catbox.moe/lg8dh3.png" alt="QRIS" style="width:100%; max-width:300px;" />
+    <div class="kotak-qris">
+      <img src="https://files.catbox.moe/lg8dh3.png" alt="QRIS">
     </div>
   </div>
 
-  <!-- Upload Bukti Transfer -->
-  <label style="margin-top:1rem;">📤 Upload Bukti Transfer</label>
+  <label>📤 Upload Bukti Transfer</label>
   <input type="file" id="bukti" accept="image/*" />
 
   <button onclick="kirimOrder()">Kirim Pesanan</button>
 </div>
+
 <footer>
   © Always Hanzz - Solusi Hosting 2025
 </footer>
 
 <script>
   function isiProduk(namaProduk) {
-  document.getElementById('produk').value = namaProduk;
-
-  // Tampilkan dan scroll ke formulir
-  const form = document.getElementById('formulir-section');
-  form.style.display = 'block';
-  form.scrollIntoView({ behavior: 'smooth' });
-}
-function toggleMetode() {
-  const metode = document.getElementById("metode").value;
-  document.getElementById("danaBox").style.display = metode === "Dana" ? "block" : "none";
-  document.getElementById("qrisBox").style.display = metode === "QRIS" ? "block" : "none";
-}
-
-function salinNomorDana() {
-  const nomor = document.getElementById("nomorDana").innerText;
-  navigator.clipboard.writeText(nomor).then(() => {
-    alert("Nomor Dana berhasil disalin!");
-  });
-}
-
-async function kirimOrder() {
-  const nama = document.getElementById("nama").value;
-  const wa = document.getElementById("whatsapp").value;
-  const produk = document.getElementById("produk").value;
-  const catatan = document.getElementById("catatan").value;
-  const metode = document.getElementById("metode").value;
-  const bukti = document.getElementById("bukti").files[0];
-
-  if (!nama || !wa || !produk || !metode || !bukti) {
-    alert("Mohon lengkapi semua data dan upload bukti transfer.");
-    return;
+    document.getElementById('produk').value = namaProduk;
+    const form = document.getElementById('formulir-section');
+    form.style.display = 'block';
+    form.scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Upload gambar ke Imgbb
-  const apiKey = "6770bf49c86db0e1d9dfe512091e8e79";
-  const formData = new FormData();
-  formData.append("image", bukti);
-
-  const upload = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
-    method: "POST",
-    body: formData,
-  });
-
-  const result = await upload.json();
-  if (!result.success) {
-    alert("Gagal upload gambar");
-    return;
+  function toggleMetode() {
+    const metode = document.getElementById("metode").value;
+    document.getElementById("danaBox").style.display = metode === "Dana" ? "block" : "none";
+    document.getElementById("qrisBox").style.display = metode === "QRIS" ? "block" : "none";
   }
 
-  const linkGambar = result.data.url;
+  function salinNomorDana() {
+    const nomor = document.getElementById("nomorDana").innerText;
+    navigator.clipboard.writeText(nomor).then(() => {
+      alert("Nomor Dana berhasil disalin!");
+    });
+  }
 
-  const pesan = `Halo Admin, saya ingin order:
-  
+  async function kirimOrder() {
+    const nama = document.getElementById("nama").value;
+    const wa = document.getElementById("whatsapp").value;
+    const produk = document.getElementById("produk").value;
+    const catatan = document.getElementById("catatan").value;
+    const metode = document.getElementById("metode").value;
+    const bukti = document.getElementById("bukti").files[0];
+
+    if (!nama || !wa || !produk || !metode || !bukti) {
+      alert("Mohon lengkapi semua data dan upload bukti transfer.");
+      return;
+    }
+
+    const apiKey = "6770bf49c86db0e1d9dfe512091e8e79";
+    const formData = new FormData();
+    formData.append("image", bukti);
+
+    const upload = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await upload.json();
+    if (!result.success) {
+      alert("Gagal upload gambar");
+      return;
+    }
+
+    const linkGambar = result.data.url;
+    const pesan = `Halo Admin, saya ingin order:
+
 📦 Produk: ${produk}
 🧑 Nama: ${nama}
 📱 WhatsApp: ${wa}
@@ -294,11 +243,11 @@ async function kirimOrder() {
 📝 Catatan: ${catatan}
 📤 Bukti Transfer: ${linkGambar}`;
 
-  const nomorAdmin = "6281936513894";
-  const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
-  window.open(linkWA, "_blank");
-}
+    const nomorAdmin = "6281936513894";
+    const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
+    window.open(linkWA, "_blank");
+  }
 </script>
 
 </body>
-</html>
+  </html>
