@@ -20,21 +20,31 @@
     }
     .produk-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   max-width: 600px;
   margin: 1rem auto;
   padding: 0 1rem;
-  justify-items: center;
 }
-    .produk {
-      background: white;
-      border-radius: 12px;
-      padding: 1rem;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: 0.2s;
-    }
+
+.produk {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+/* Trik agar produk terakhir ganjil otomatis ke tengah */
+.produk-container .produk:only-child {
+  grid-column: span 2;
+  justify-self: center;
+}
+.produk-container .produk:nth-child(odd):last-child {
+  grid-column: span 2;
+  justify-self: center;
+}
     .produk:hover {
       transform: scale(1.03);
     }
